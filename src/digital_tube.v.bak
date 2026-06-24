@@ -1,0 +1,72 @@
+module digital_tube (
+    input       clk,
+    input       rst,
+    output [5:0]sel,//位选
+    output reg[7:0] seg
+
+);
+parameter TIME = 24_999_999;//0.5s
+reg [24:0] cnt ;
+wire  add_cnt, end_cnt;
+reg [3:0]cnt_num;//0-15循环计数
+wire add_cnt_num,end_cnt_num;
+
+//位选
+assign sel = 6'b000_000;
+
+
+//0.5s timer
+always @(posedge clk or negedge rst) begin
+    if(!rst)
+        cnt<=0;
+    else if (add_cnt) begin
+        if(end_cnt)
+            cnt<=0;
+        else
+            cnt <= cnt+1;
+    end
+end
+assign add_cnt = 1;
+assign end_cnt = add_cnt && cnt == TIME;
+
+
+//0-15 cycle
+always @(posedge clk or negedge rst) begin
+    if(!rst)
+        cnt_num<=0;
+    else if (add_cnt_num) begin
+        if(end_cnt_num)
+            cnt_num<=0;
+        else
+            cnt_num <= cnt_num +1;
+    end
+end
+assign add_cnt_num = end_cnt;
+assign end_cnt_num = add_cnt_num && cnt_num == 15;
+
+//output
+always @(posedge clk or negedge rst) begin
+    if(!rst)
+        seg <= 8'b0100_0000;
+    else
+        case (cnt_num)
+            0 :seg <= 8'b0100_0000;      //0
+            1 :seg <= 8'b0111_1001;      //1
+            2 :seg <= 8'b0010_0100;      //2
+            3 :seg <= 8'b0011_0000;      //3
+            4 :seg <= 8'b0001_1001;      //4
+            5 :seg <= 8'b0001_0010;      //5
+            6 :seg <= 8'b0000_0010;      //6
+            7 :seg <= 8'b0111_1000;      //7
+            8 :seg <= 8'b0000_0000;      //8
+            9 :seg <= 8'b0001_0000;      //9
+            10:seg <= 8'b0000_1000;      //A
+            11:seg <= 8'b0000_0011;      //B
+            12:seg <= 8'b0100_0110;      //C
+            13:seg <= 8'b0010_0001;      //D
+            14:seg <= 8'b0000_0110;      //E
+            15:seg <= 8'b0000_1110;      //F 
+            default: ;
+        endcase
+
+endmodule

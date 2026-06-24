@@ -1,0 +1,35 @@
+module key (
+    input clk,
+    input rst,
+    input key_in,
+    output key_out
+);
+
+parameter TIME = 999_999; // 20ms @ 50MHz
+reg [19:0] cnt
+reg [1:0] k_in
+// 0.2s计数器
+always @(posedge clk or negedge rst) begin
+    if (rst == 0) begin
+        k_in <= 1;
+    end
+    else begin
+        k_in <= {k_in[0],key_in};
+    end
+        
+end
+
+always @(posedge clk or negedge rst) begin
+    if (rst == 0) 
+       cnt <= 0;
+    else if(k_in[1]==1)
+        cnt <= 0;
+    else if (k_in[1] == 0 && cnt == TIME) begin
+        key_out = 1;
+    end
+    else
+        key_out = 0;
+ end   
+
+
+endmodule

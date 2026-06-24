@@ -1,0 +1,209 @@
+module buzzer_music (
+    input clk,          // 50MHz系统时钟
+    input rst_n,        // 低电平复位
+    output reg buzzer   // 无源蜂鸣器输出（50%占空比）
+);
+
+// ====================== 参数定义 ======================
+// 状态机状态
+parameter IDLE = 2'b00;
+parameter PLAY = 2'b01;
+parameter END  = 2'b10;
+
+// 总音符数量
+parameter TOTAL_NOTES = 6'd64;
+
+// 音高对应的频率计数器值
+parameter FREQ_1  = 18'd95601;   // 中音1
+parameter FREQ_2  = 18'd85178;   // 中音2
+parameter FREQ_3  = 18'd75872;   // 中音3
+parameter FREQ_4  = 18'd71632;   // 中音4
+parameter FREQ_5  = 18'd63774;   // 中音5
+parameter FREQ_6  = 18'd56817;   // 中音6
+parameter FREQ_7  = 18'd50099;   // 中音7
+parameter FREQ_8  = 18'd67567;   // 升中音4
+
+// 时长对应的持续时间计数器值
+parameter DUR_1  = 25'd7812499;  // 十六分音符
+parameter DUR_2  = 25'd15624999; // 八分音符
+parameter DUR_3  = 25'd23437499; // 附点八分音符
+parameter DUR_4  = 25'd31249999; // 四分音符
+parameter DUR_5  = 25'd62499999; // 二分音符
+
+// ====================== 内部信号定义 ======================
+reg [1:0] c_state;  // 当前状态
+reg [1:0] n_state;  // 下一状态
+
+// 三个要求的计数器
+reg [5:0] cnt_note;     // 1. 音符数量计数器（0~63）
+reg [24:0] cnt_duration; // 2. 持续时间计数器
+reg [17:0] cnt_freq;     // 3. 频率计数器
+
+// 当前音符的参数
+reg [17:0] current_freq;
+reg [24:0] current_duration;
+
+// ====================== 三段式状态机 ======================
+// 第一段：状态寄存器更新
+always @(posedge clk or negedge rst_n) begin
+    if(!rst_n)
+        c_state <= IDLE;
+    else
+        c_state <= n_state;
+end
+
+// 第二段：状态跳转逻辑
+always @(*) begin
+    case(c_state)
+        IDLE: n_state = PLAY;  // 复位后直接进入播放状态
+        PLAY: n_state = (cnt_note == TOTAL_NOTES) ? END : PLAY;
+        END:  n_state = PLAY;  // 播放结束后循环
+        default: n_state = IDLE;
+    endcase
+end
+
+// 第三段：输出逻辑与计数器控制
+always @(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        cnt_note <= 6'd0;
+        cnt_duration <= 25'd0;
+        cnt_freq <= 18'd0;
+        buzzer <= 1'b0;
+    end
+    else begin
+        case(c_state)
+            IDLE: begin
+                cnt_note <= 6'd0;
+                cnt_duration <= 25'd0;
+                cnt_freq <= 18'd0;
+                buzzer <= 1'b0;
+            end
+            
+            PLAY: begin
+                // 频率计数器：生成对应频率的方波（50%占空比）
+                if(cnt_freq == current_freq) begin
+                    cnt_freq <= 18'd0;
+                    buzzer <= ~buzzer;  // 翻转输出实现50%占空比
+                end
+                else begin
+                    cnt_freq <= cnt_freq + 1'b1;
+                end
+                
+                // 持续时间计数器：控制单个音符播放时长
+                if(cnt_duration == current_duration) begin
+                    cnt_duration <= 25'd0;
+                    cnt_note <= cnt_note + 1'b1;  // 切换到下一个音符
+                end
+                else begin
+                    cnt_duration <= cnt_duration + 1'b1;
+                end
+            end
+            
+            END: begin
+                cnt_note <= 6'd0;  // 重置音符计数器，循环播放
+                cnt_duration <= 25'd0;
+                cnt_freq <= 18'd0;
+            end
+        endcase
+    end
+end
+
+// ====================== 音符ROM表（组合逻辑） ======================
+always @(*) begin
+    case(cnt_note)
+        // 第1小节
+        6'd0:  begin current_freq = FREQ_3; current_duration = DUR_2; end
+        6'd1:  begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd2:  begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd3:  begin current_freq = FREQ_5; current_duration = DUR_2; end
+        6'd4:  begin current_freq = FREQ_3; current_duration = DUR_3; end
+        6'd5:  begin current_freq = FREQ_2; current_duration = DUR_2; end
+        
+        // 第2小节
+        6'd6:  begin current_freq = FREQ_1; current_duration = DUR_3; end
+        6'd7:  begin current_freq = FREQ_2; current_duration = DUR_1; end
+        6'd8:  begin current_freq = FREQ_1; current_duration = DUR_2; end
+        6'd9:  begin current_freq = FREQ_7; current_duration = DUR_2; end
+        6'd10: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd11: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        
+        // 第3小节
+        6'd12: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        6'd13: begin current_freq = FREQ_1; current_duration = DUR_2; end
+        6'd14: begin current_freq = FREQ_1; current_duration = DUR_2; end
+        6'd15: begin current_freq = FREQ_7; current_duration = DUR_2; end
+        6'd16: begin current_freq = FREQ_6; current_duration = DUR_3; end
+        6'd17: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        
+        // 第4小节
+        6'd18: begin current_freq = FREQ_2; current_duration = DUR_3; end
+        6'd19: begin current_freq = FREQ_1; current_duration = DUR_1; end
+        6'd20: begin current_freq = FREQ_7; current_duration = DUR_2; end
+        6'd21: begin current_freq = FREQ_5; current_duration = DUR_2; end
+        6'd22: begin current_freq = FREQ_6; current_duration = DUR_5; end
+        
+        // 第5小节
+        6'd23: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd24: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        6'd25: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        6'd26: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        6'd27: begin current_freq = FREQ_3; current_duration = DUR_3; end
+        6'd28: begin current_freq = FREQ_2; current_duration = DUR_2; end
+        
+        // 第6小节
+        6'd29: begin current_freq = FREQ_1; current_duration = DUR_3; end
+        6'd30: begin current_freq = FREQ_2; current_duration = DUR_1; end
+        6'd31: begin current_freq = FREQ_1; current_duration = DUR_2; end
+        6'd32: begin current_freq = FREQ_7; current_duration = DUR_2; end
+        6'd33: begin current_freq = FREQ_6; current_duration = DUR_5; end
+        
+        // 第7小节
+        6'd34: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd35: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd36: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd37: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd38: begin current_freq = FREQ_6; current_duration = DUR_3; end
+        6'd39: begin current_freq = FREQ_5; current_duration = DUR_2; end
+        
+        // 第8小节
+        6'd40: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        6'd41: begin current_freq = FREQ_5; current_duration = DUR_2; end
+        6'd42: begin current_freq = FREQ_8; current_duration = DUR_2; end
+        6'd43: begin current_freq = FREQ_3; current_duration = DUR_5; end
+        
+        // 第9小节（重复第1小节）
+        6'd44: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        6'd45: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd46: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd47: begin current_freq = FREQ_5; current_duration = DUR_2; end
+        6'd48: begin current_freq = FREQ_3; current_duration = DUR_3; end
+        6'd49: begin current_freq = FREQ_2; current_duration = DUR_2; end
+        
+        // 第10小节（重复第2小节）
+        6'd50: begin current_freq = FREQ_1; current_duration = DUR_3; end
+        6'd51: begin current_freq = FREQ_2; current_duration = DUR_1; end
+        6'd52: begin current_freq = FREQ_1; current_duration = DUR_2; end
+        6'd53: begin current_freq = FREQ_7; current_duration = DUR_2; end
+        6'd54: begin current_freq = FREQ_6; current_duration = DUR_2; end
+        6'd55: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        
+        // 第11小节（重复第3小节）
+        6'd56: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        6'd57: begin current_freq = FREQ_1; current_duration = DUR_2; end
+        6'd58: begin current_freq = FREQ_1; current_duration = DUR_2; end
+        6'd59: begin current_freq = FREQ_7; current_duration = DUR_2; end
+        6'd60: begin current_freq = FREQ_6; current_duration = DUR_3; end
+        6'd61: begin current_freq = FREQ_3; current_duration = DUR_2; end
+        
+        // 第12小节（重复第4小节）
+        6'd62: begin current_freq = FREQ_2; current_duration = DUR_3; end
+        6'd63: begin current_freq = FREQ_1; current_duration = DUR_1; end
+        6'd64: begin current_freq = FREQ_7; current_duration = DUR_2; end
+        6'd65: begin current_freq = FREQ_5; current_duration = DUR_2; end
+        6'd66: begin current_freq = FREQ_6; current_duration = DUR_5; end
+        
+        default: begin current_freq = FREQ_1; current_duration = DUR_4; end
+    endcase
+end
+
+endmodule

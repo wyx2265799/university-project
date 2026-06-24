@@ -1,0 +1,37 @@
+module top (
+    input           clk,
+    input           rst,
+    input           key1,           // 增加刷新时间
+    input           key2,           // 减少刷新时间
+    output [5:0]    sel,
+    output [7:0]    seg
+);
+
+wire inc_pulse, dec_pulse;
+
+// 按键消抖（复用你原来的 key 模块）
+key u_key1 (
+    .clk     (clk),
+    .rst     (rst),
+    .key_in  (key1),
+    .key_out (inc_pulse)
+);
+
+key u_key2 (
+    .clk     (clk),
+    .rst     (rst),
+    .key_in  (key2),
+    .key_out (dec_pulse)
+);
+
+// 动态扫描及刷新率控制
+dynamic_scan u_scan (
+    .clk       (clk),
+    .rst       (rst),
+    .inc_pulse (inc_pulse),
+    .dec_pulse (dec_pulse),
+    .sel       (sel),
+    .seg       (seg)
+);
+
+endmodule

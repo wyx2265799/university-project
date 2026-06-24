@@ -1,0 +1,212 @@
+# End time: 15:26:20 on Jun 11,2026, Elapsed time: 0:10:17
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:20 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/key_debounce.v 
+# -- Compiling module key_debounce
+# 
+# Top level modules:
+# 	key_debounce
+# End time: 15:26:20 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:20 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/seven_seg_score.v 
+# -- Compiling module seven_seg_score
+# 
+# Top level modules:
+# 	seven_seg_score
+# End time: 15:26:20 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:20 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/uart_rx_byte.v 
+# -- Compiling module uart_rx_byte
+# 
+# Top level modules:
+# 	uart_rx_byte
+# End time: 15:26:20 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:20 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/uart_tx_byte.v 
+# -- Compiling module uart_tx_byte
+# 
+# Top level modules:
+# 	uart_tx_byte
+# End time: 15:26:20 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:20 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/tetris_music.v 
+# -- Compiling module music
+# 
+# Top level modules:
+# 	music
+# End time: 15:26:20 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:21 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/ws2812_matrix.v 
+# -- Compiling module ws2812_matrix
+# 
+# Top level modules:
+# 	ws2812_matrix
+# End time: 15:26:21 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:21 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/tetris_core.v 
+# -- Compiling module tetris_core
+# 
+# Top level modules:
+# 	tetris_core
+# End time: 15:26:21 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:21 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/tetris_top.v 
+# -- Compiling module tetris_top
+# 
+# Top level modules:
+# 	tetris_top
+# End time: 15:26:21 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:26:21 on Jun 11,2026
+# vlog -reportprogress 300 tb_tetris_top.v 
+# -- Compiling module tb_tetris_top
+# 
+# Top level modules:
+# 	tb_tetris_top
+# End time: 15:26:21 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -wlf tetris_top_key_capture.wlf work.tb_tetris_top 
+# Start time: 15:26:21 on Jun 11,2026
+# Loading work.tb_tetris_top
+# Loading work.tetris_top
+# Loading work.key_debounce
+# Loading work.uart_rx_byte
+# Loading work.tetris_core
+# Loading work.seven_seg_score
+# Loading work.ws2812_matrix
+# Loading work.music
+# Loading work.uart_tx_byte
+# WARNING: No extended dataflow license exists
+# An error occured loading layout Simulate.
+# can't read "vsimPriv(.main_pane.wave.interior.cs.body.pw.wf:grid)": no such element in array.main_pane.wave.interior.cs.body.pw.wf
+# ** Note: $finish    : tb_tetris_top.v(84)
+#    Time: 119145837 ns  Iteration: 0  Instance: /tb_tetris_top
+# 1
+# Break in Module tb_tetris_top at tb_tetris_top.v line 84
+run
+run
+run
+run
+run
+wave zoom full
+# {0 ps} {147657128851 ps}
+env ..
+# sim:/tb_tetris_top
+quit -sim
+do C:/Users/23591/Desktop/FPGA_practise/key/fangzhen/capture_tetris_key_wave.do
+# End time: 20:20:57 on Jun 11,2026, Elapsed time: 4:54:36
+# Errors: 1, Warnings: 1
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:57 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/key_debounce.v 
+# -- Compiling module key_debounce
+# 
+# Top level modules:
+# 	key_debounce
+# End time: 20:20:57 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:57 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/seven_seg_score.v 
+# -- Compiling module seven_seg_score
+# 
+# Top level modules:
+# 	seven_seg_score
+# End time: 20:20:57 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:57 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/uart_rx_byte.v 
+# -- Compiling module uart_rx_byte
+# 
+# Top level modules:
+# 	uart_rx_byte
+# End time: 20:20:57 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:58 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/uart_tx_byte.v 
+# -- Compiling module uart_tx_byte
+# 
+# Top level modules:
+# 	uart_tx_byte
+# End time: 20:20:58 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:58 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/tetris_music.v 
+# -- Compiling module music
+# 
+# Top level modules:
+# 	music
+# End time: 20:20:58 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:58 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/ws2812_matrix.v 
+# -- Compiling module ws2812_matrix
+# 
+# Top level modules:
+# 	ws2812_matrix
+# End time: 20:20:58 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:58 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/tetris_core.v 
+# -- Compiling module tetris_core
+# 
+# Top level modules:
+# 	tetris_core
+# End time: 20:20:58 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:58 on Jun 11,2026
+# vlog -reportprogress 300 ../class_design/tetris_top.v 
+# -- Compiling module tetris_top
+# 
+# Top level modules:
+# 	tetris_top
+# End time: 20:20:58 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 20:20:59 on Jun 11,2026
+# vlog -reportprogress 300 tb_tetris_top.v 
+# -- Compiling module tb_tetris_top
+# 
+# Top level modules:
+# 	tb_tetris_top
+# End time: 20:20:59 on Jun 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -wlf tetris_top_key_capture.wlf work.tb_tetris_top 
+# Start time: 20:20:59 on Jun 11,2026
+# Loading work.tb_tetris_top
+# Loading work.tetris_top
+# Loading work.key_debounce
+# Loading work.uart_rx_byte
+# Loading work.tetris_core
+# Loading work.seven_seg_score
+# Loading work.ws2812_matrix
+# Loading work.music
+# Loading work.uart_tx_byte
+# WARNING: No extended dataflow license exists
+# .main_pane.wave.interior.cs.body.pw.wf
+# ** Note: $finish    : tb_tetris_top.v(84)
+#    Time: 119145837 ns  Iteration: 0  Instance: /tb_tetris_top
+# End time: 20:22:54 on Jun 11,2026, Elapsed time: 0:01:55
+# Errors: 0, Warnings: 0

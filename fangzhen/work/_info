@@ -1,0 +1,190 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/23591/Desktop/FPGA_practise/key/fangzhen
+vkey_debounce
+Z1 !s110 1781180457
+!i10b 1
+!s100 fZ6Rh0LBHUTCm6A_;Za4^0
+Iad_HZjSS9kUD40hb9CYI41
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1781095433
+8../class_design/key_debounce.v
+F../class_design/key_debounce.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1781180457.000000
+!s107 ../class_design/key_debounce.v|
+!s90 -reportprogress|300|../class_design/key_debounce.v|
+!i113 1
+Z5 tCvgOpt 0
+vmusic
+Z6 !s110 1781180458
+!i10b 1
+!s100 598k<MJEQFL3cZFmOOfY22
+Ik^1e]3@j>c1@5Bn?]RMX:0
+R2
+R0
+w1781103000
+8../class_design/tetris_music.v
+F../class_design/tetris_music.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z7 !s108 1781180458.000000
+!s107 ../class_design/tetris_music.v|
+!s90 -reportprogress|300|../class_design/tetris_music.v|
+!i113 1
+R5
+vseven_seg_score
+R1
+!i10b 1
+!s100 >>elieO;K3MCk=[6mh2N70
+I`JB7Nn5SDSP`ZcVYZf9[z0
+R2
+R0
+w1781096734
+8../class_design/seven_seg_score.v
+F../class_design/seven_seg_score.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 ../class_design/seven_seg_score.v|
+!s90 -reportprogress|300|../class_design/seven_seg_score.v|
+!i113 1
+R5
+vtb_tetris_top
+!s110 1781180459
+!i10b 1
+!s100 5>12;3AH_hF1f4_SA?S`V0
+IJ668cE1^zzVA]99nGhRVD0
+R2
+R0
+w1781154401
+8tb_tetris_top.v
+Ftb_tetris_top.v
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1781180459.000000
+!s107 tb_tetris_top.v|
+!s90 -reportprogress|300|tb_tetris_top.v|
+!i113 1
+R5
+vtetris_core
+R6
+!i10b 1
+!s100 oWl5H@BOoRFGVKI`e8cDC3
+I`UPjP]QkPYJZ><>ClP`Ng1
+R2
+R0
+w1781098016
+8../class_design/tetris_core.v
+F../class_design/tetris_core.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 ../class_design/tetris_core.v|
+!s90 -reportprogress|300|../class_design/tetris_core.v|
+!i113 1
+R5
+vtetris_top
+R6
+!i10b 1
+!s100 X[ccM8Y^HhkSI<ZXVE8]?3
+I]KZ7oMXRT[QH5Y0i4EF1^0
+R2
+R0
+w1781106744
+8../class_design/tetris_top.v
+F../class_design/tetris_top.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 ../class_design/tetris_top.v|
+!s90 -reportprogress|300|../class_design/tetris_top.v|
+!i113 1
+R5
+vuart_rx_byte
+R1
+!i10b 1
+!s100 ?f9W:Ydg^LUohGR<lW6IV3
+IbffN=WB2OF25XefRT:Hg=3
+R2
+R0
+w1781090811
+8../class_design/uart_rx_byte.v
+F../class_design/uart_rx_byte.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 ../class_design/uart_rx_byte.v|
+!s90 -reportprogress|300|../class_design/uart_rx_byte.v|
+!i113 1
+R5
+vuart_tx_byte
+R6
+!i10b 1
+!s100 m;:Qh<3MRiU^k86QPiWmV2
+I@f@Ai6n8jGJJEY0>b47D03
+R2
+R0
+w1781090892
+8../class_design/uart_tx_byte.v
+F../class_design/uart_tx_byte.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 ../class_design/uart_tx_byte.v|
+!s90 -reportprogress|300|../class_design/uart_tx_byte.v|
+!i113 1
+R5
+vws2812_matrix
+R6
+!i10b 1
+!s100 6eiJ0MW;X`NmKg[8RVKYA1
+IFh_0_VcJ:RW=C0PAD<^>F3
+R2
+R0
+w1781093360
+8../class_design/ws2812_matrix.v
+F../class_design/ws2812_matrix.v
+L0 1
+R3
+r1
+!s85 0
+31
+R7
+!s107 ../class_design/ws2812_matrix.v|
+!s90 -reportprogress|300|../class_design/ws2812_matrix.v|
+!i113 1
+R5

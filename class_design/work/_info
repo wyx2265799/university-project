@@ -1,0 +1,190 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/23591/Desktop/FPGA_practise/key/class_design
+vkey_debounce
+Z1 !s110 1781099801
+!i10b 1
+!s100 fZ6Rh0LBHUTCm6A_;Za4^0
+IZ20IMXFJZdlOAX8ZLgj_g1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1781095433
+8key_debounce.v
+Fkey_debounce.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1781099801.000000
+Z5 !s107 tetris_top.v|tetris_core.v|ws2812_matrix.v|tetris_music.v|uart_message_tx.v|uart_tx_byte.v|uart_rx_byte.v|seven_seg_score.v|key_debounce.v|
+Z6 !s90 key_debounce.v|seven_seg_score.v|uart_rx_byte.v|uart_tx_byte.v|uart_message_tx.v|tetris_music.v|ws2812_matrix.v|tetris_core.v|tetris_top.v|
+!i113 1
+Z7 tCvgOpt 0
+vmusic
+R1
+!i10b 1
+!s100 9Phaj7iM;V<FLd[WebeTd3
+I>@IbKW8fVQQeD7LVedaaj0
+R2
+R0
+w1781098561
+8tetris_music.v
+Ftetris_music.v
+L0 8
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+vseven_seg_score
+R1
+!i10b 1
+!s100 >>elieO;K3MCk=[6mh2N70
+IXM45fmo:=Eh6hUd4ZYK2b2
+R2
+R0
+w1781096734
+8seven_seg_score.v
+Fseven_seg_score.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+vtetris_core
+R1
+!i10b 1
+!s100 oWl5H@BOoRFGVKI`e8cDC3
+IB9aO`?flTZZ2N]kME2hHZ3
+R2
+R0
+w1781098016
+8tetris_core.v
+Ftetris_core.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+vtetris_top
+R1
+!i10b 1
+!s100 >PnS:n4Lf0S^1^LeeEM^a1
+IgQT`@A>n>EfnfHl3O2GRJ1
+R2
+R0
+w1781098984
+8tetris_top.v
+Ftetris_top.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+vuart_message_tx
+R1
+!i10b 1
+!s100 ak9b0Zk`S706>Umm1GLR83
+I[n^6`Cfnz2eXWfD:g0;]W2
+R2
+R0
+w1781092038
+8uart_message_tx.v
+Fuart_message_tx.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+vuart_rx_byte
+R1
+!i10b 1
+!s100 ?f9W:Ydg^LUohGR<lW6IV3
+IF==?g`1lG^Gi35;1WAB373
+R2
+R0
+w1781090811
+8uart_rx_byte.v
+Fuart_rx_byte.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+vuart_tx_byte
+R1
+!i10b 1
+!s100 m;:Qh<3MRiU^k86QPiWmV2
+IbNho:Cel4H_H3]kM?9QNH3
+R2
+R0
+w1781090892
+8uart_tx_byte.v
+Fuart_tx_byte.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
+vws2812_matrix
+R1
+!i10b 1
+!s100 6eiJ0MW;X`NmKg[8RVKYA1
+I1RXClY]CkK[3TONGbB>1D3
+R2
+R0
+w1781093360
+8ws2812_matrix.v
+Fws2812_matrix.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+R5
+R6
+!i113 1
+R7
